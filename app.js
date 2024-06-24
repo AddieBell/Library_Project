@@ -13,7 +13,7 @@ class Book {
 }
 
 class Library {
-  contructor() {
+  constructor() {
     // QUESTION: Why no parameters?
     this.bookCount = 0;
     this.books = [];
@@ -46,15 +46,16 @@ class Library {
     readCheckbox.type = "checkbox";
     readCheckbox.checked = newBook.read;
     readCheckbox.disabled = newBook.read;
-    readCheckbox.addEventListener("change", () => {
-      this.markRead(readCheckbox, newBook.id);
+    readCheckbox.addEventListener("change", () =>
+      this.markRead(readCheckbox, newBook.id)
+    );
       readCell.appendChild(readCheckbox);
-    });
+    
 
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
-    removeButton.addEventListener("click", () => {
-      this.removeBook(newBook.id);
+    removeButton.addEventListener("click", () =>
+      this.removeBook(newBook.id));
 
       removeCell.appendChild(removeButton);
 
@@ -64,8 +65,8 @@ class Library {
       newRow.appendChild(removeCell);
       tableBody.appendChild(newRow);
       this.books.push(newBook);
-    });
-  } // END OF ADDBOOK
+    }
+   // END OF ADDBOOK
   removeBook(id) {
     this.books = this.books.filter((book) => book.id !== id);
     const rowToRemove = document.querySelector(`tr[data-id="${id}"]`);
